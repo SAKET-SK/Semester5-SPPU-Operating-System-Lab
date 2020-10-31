@@ -1,0 +1,164 @@
+[liveuser@localhost-live ~]$ man cal
+[liveuser@localhost-live ~]$ cal
+     August 2020    
+Su Mo Tu We Th Fr Sa
+                   1
+ 2  3  4  5  6  7  8
+ 9 10 11 12 13 14 15
+16 17 18 19 20 21 22
+23 24 25 26 27 28 29
+30 31               
+[liveuser@localhost-live ~]$ man date
+[liveuser@localhost-live ~]$ date
+Wed 19 Aug 2020 11:14:59 AM EDT
+[liveuser@localhost-live ~]$ date +%m
+08
+[liveuser@localhost-live ~]$ date +%h
+Aug
+[liveuser@localhost-live ~]$ date +%h %s
+date: extra operand ‘%s’
+Try 'date --help' for more information.
+[liveuser@localhost-live ~]$ date +%h %m
+date: extra operand ‘%m’
+Try 'date --help' for more information.
+[liveuser@localhost-live ~]$ date +"%h %m"
+Aug 08
+[liveuser@localhost-live ~]$ date +%y
+20
+[liveuser@localhost-live ~]$ date +"%H %M %S"
+11 18 17
+[liveuser@localhost-live ~]$ date +%T
+11:18:32
+[liveuser@localhost-live ~]$ date +%D
+08/19/20
+[liveuser@localhost-live ~]$ mkdir mydirectory
+[liveuser@localhost-live ~]$ mkdir -m 777 foo
+[liveuser@localhost-live ~]$ cat abc.txt
+cat: abc.txt: No such file or directory
+[liveuser@localhost-live ~]$ touch abc.txt
+[liveuser@localhost-live ~]$ touch pqr.txt
+[liveuser@localhost-live ~]$ stat abc.txt
+  File: abc.txt
+  Size: 27        	Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d	Inode: 262662      Links: 1
+Access: (0664/-rw-rw-r--)  Uid: ( 1000/liveuser)   Gid: ( 1000/liveuser)
+Context: unconfined_u:object_r:user_home_t:s0
+Access: 2020-08-19 11:22:42.267156809 -0400
+Modify: 2020-08-19 11:22:42.271156805 -0400
+Change: 2020-08-19 11:22:42.274156802 -0400
+ Birth: -
+[liveuser@localhost-live ~]$ cat abc.txt > pqr.txt
+[liveuser@localhost-live ~]$ cat -n abc.txt
+     1	This is abc.txt text file.
+[liveuser@localhost-live ~]$ cat >> abc.txt
+
+;
+pqr.txt
+^C
+[liveuser@localhost-live ~]$ ls -l
+total 48
+-rw-rw-r--. 1 liveuser liveuser   38 Aug 19 11:25 abc.txt
+drwxr-xr-x. 2 liveuser liveuser 4096 Aug 19 11:08 Desktop
+drwxr-xr-x. 2 liveuser liveuser 4096 Aug 19 11:08 Documents
+drwxr-xr-x. 2 liveuser liveuser 4096 Aug 19 11:08 Downloads
+drwxrwxrwx. 2 liveuser liveuser 4096 Aug 19 11:20 foo
+drwxr-xr-x. 2 liveuser liveuser 4096 Aug 19 11:08 Music
+drwxrwxr-x. 2 liveuser liveuser 4096 Aug 19 11:19 mydirectory
+drwxr-xr-x. 2 liveuser liveuser 4096 Aug 19 11:08 Pictures
+-rw-rw-r--. 1 liveuser liveuser   27 Aug 19 11:24 pqr.txt
+drwxr-xr-x. 2 liveuser liveuser 4096 Aug 19 11:08 Public
+drwxr-xr-x. 2 liveuser liveuser 4096 Aug 19 11:08 Templates
+drwxr-xr-x. 2 liveuser liveuser 4096 Aug 19 11:08 Videos
+[liveuser@localhost-live ~]$ man ls
+[liveuser@localhost-live ~]$ la -a
+bash: la: command not found...
+[liveuser@localhost-live ~]$ ls -a
+.   abc.txt       .bash_profile  .cache   Desktop    Downloads  foo     .mozilla  mydirectory  pqr.txt  Templates
+..  .bash_logout  .bashrc        .config  Documents  .esd_auth  .local  Music     Pictures     Public   Videos
+[liveuser@localhost-live ~]$ ls -l
+total 48
+-rw-rw-r--. 1 liveuser liveuser   38 Aug 19 11:25 abc.txt
+drwxr-xr-x. 2 liveuser liveuser 4096 Aug 19 11:08 Desktop
+drwxr-xr-x. 2 liveuser liveuser 4096 Aug 19 11:08 Documents
+drwxr-xr-x. 2 liveuser liveuser 4096 Aug 19 11:08 Downloads
+drwxrwxrwx. 2 liveuser liveuser 4096 Aug 19 11:20 foo
+drwxr-xr-x. 2 liveuser liveuser 4096 Aug 19 11:08 Music
+drwxrwxr-x. 2 liveuser liveuser 4096 Aug 19 11:19 mydirectory
+drwxr-xr-x. 2 liveuser liveuser 4096 Aug 19 11:08 Pictures
+-rw-rw-r--. 1 liveuser liveuser   27 Aug 19 11:24 pqr.txt
+drwxr-xr-x. 2 liveuser liveuser 4096 Aug 19 11:08 Public
+drwxr-xr-x. 2 liveuser liveuser 4096 Aug 19 11:08 Templates
+drwxr-xr-x. 2 liveuser liveuser 4096 Aug 19 11:08 Videos
+[liveuser@localhost-live ~]$ ls -la
+total 88
+drwx------. 16 liveuser liveuser 4096 Aug 19 11:24 .
+drwxr-xr-x.  3 root     root     4096 Aug 19  2020 ..
+-rw-rw-r--.  1 liveuser liveuser   38 Aug 19 11:25 abc.txt
+-rw-r--r--.  1 liveuser liveuser   18 Jan 28  2020 .bash_logout
+-rw-r--r--.  1 liveuser liveuser  141 Jan 28  2020 .bash_profile
+-rw-r--r--.  1 liveuser liveuser  376 Jan 28  2020 .bashrc
+drwx------.  8 liveuser liveuser 4096 Aug 19 11:09 .cache
+drwxr-xr-x. 14 liveuser liveuser 4096 Aug 19 11:22 .config
+drwxr-xr-x.  2 liveuser liveuser 4096 Aug 19 11:08 Desktop
+drwxr-xr-x.  2 liveuser liveuser 4096 Aug 19 11:08 Documents
+drwxr-xr-x.  2 liveuser liveuser 4096 Aug 19 11:08 Downloads
+-rw-------.  1 liveuser liveuser   16 Aug 19 11:08 .esd_auth
+drwxrwxrwx.  2 liveuser liveuser 4096 Aug 19 11:20 foo
+drwx------.  3 liveuser liveuser 4096 Aug 19 11:08 .local
+drwxr-xr-x.  4 liveuser liveuser 4096 Apr 22 18:34 .mozilla
+drwxr-xr-x.  2 liveuser liveuser 4096 Aug 19 11:08 Music
+drwxrwxr-x.  2 liveuser liveuser 4096 Aug 19 11:19 mydirectory
+drwxr-xr-x.  2 liveuser liveuser 4096 Aug 19 11:08 Pictures
+-rw-rw-r--.  1 liveuser liveuser   27 Aug 19 11:24 pqr.txt
+drwxr-xr-x.  2 liveuser liveuser 4096 Aug 19 11:08 Public
+drwxr-xr-x.  2 liveuser liveuser 4096 Aug 19 11:08 Templates
+drwxr-xr-x.  2 liveuser liveuser 4096 Aug 19 11:08 Videos
+[liveuser@localhost-live ~]$ ls -lh
+total 48K
+-rw-rw-r--. 1 liveuser liveuser   38 Aug 19 11:25 abc.txt
+drwxr-xr-x. 2 liveuser liveuser 4.0K Aug 19 11:08 Desktop
+drwxr-xr-x. 2 liveuser liveuser 4.0K Aug 19 11:08 Documents
+drwxr-xr-x. 2 liveuser liveuser 4.0K Aug 19 11:08 Downloads
+drwxrwxrwx. 2 liveuser liveuser 4.0K Aug 19 11:20 foo
+drwxr-xr-x. 2 liveuser liveuser 4.0K Aug 19 11:08 Music
+drwxrwxr-x. 2 liveuser liveuser 4.0K Aug 19 11:19 mydirectory
+drwxr-xr-x. 2 liveuser liveuser 4.0K Aug 19 11:08 Pictures
+-rw-rw-r--. 1 liveuser liveuser   27 Aug 19 11:24 pqr.txt
+drwxr-xr-x. 2 liveuser liveuser 4.0K Aug 19 11:08 Public
+drwxr-xr-x. 2 liveuser liveuser 4.0K Aug 19 11:08 Templates
+drwxr-xr-x. 2 liveuser liveuser 4.0K Aug 19 11:08 Videos
+[liveuser@localhost-live ~]$ ls -S
+Desktop  Documents  Downloads  foo  Music  mydirectory  Pictures  Public  Templates  Videos  abc.txt  pqr.txt
+[liveuser@localhost-live ~]$ ls -t
+abc.txt  pqr.txt  foo  mydirectory  Videos  Documents  Music  Pictures  Public  Downloads  Templates  Desktop
+[liveuser@localhost-live ~]$ man cp
+[liveuser@localhost-live ~]$ 
+[liveuser@localhost-live ~]$ cp abc.txt pqr.txt
+[liveuser@localhost-live ~]$ pwd
+/home/liveuser
+[liveuser@localhost-live ~]$ umask 044
+[liveuser@localhost-live ~]$ touch test2
+[liveuser@localhost-live ~]$ chmod 400 abc.txt
+[liveuser@localhost-live ~]$ chmod 020 abc.txt
+[liveuser@localhost-live ~]$ chmod 001 abc.txt
+[liveuser@localhost-live ~]$ chmod 777 abc.txt
+[liveuser@localhost-live ~]$ man chmod
+[liveuser@localhost-live ~]$ wc abc.txt
+ 4  7 38 abc.txt
+[liveuser@localhost-live ~]$ wc-l abc.txt
+bash: wc-l: command not found...
+[liveuser@localhost-live ~]$ wc -l abc.txt
+4 abc.txt
+[liveuser@localhost-live ~]$ echo "Hello World!"
+Hello World!
+[liveuser@localhost-live ~]$ x=10
+[liveuser@localhost-live ~]$ echo x
+x
+[liveuser@localhost-live ~]$ echo $x
+10
+[liveuser@localhost-live ~]$ man echo
+[liveuser@localhost-live ~]$ ^C
+[liveuser@localhost-live ~]$ ^C
+[liveuser@localhost-live ~]$ touch oscmds.txt
+[liveuser@localhost-live ~]$ ^C
+[liveuser@localhost-live ~]$ 

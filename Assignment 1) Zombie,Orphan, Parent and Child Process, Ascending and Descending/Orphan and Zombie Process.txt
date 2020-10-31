@@ -1,0 +1,165 @@
+3) Orphan Process Demonstration:
+
+#include<sys/types.h>
+#include<unistd.h>
+#include<stdio.h>
+void main()
+{
+    pid_t pid;
+    printf("Orphan Process Demonstration\n");
+    pid=fork();
+    if(pid==-1)
+    {
+        printf("\nProcess Creation Error");
+    }
+    else if(pid==0)
+    {
+        sleep(3);
+        printf("\nI am Child Process ID = %d",getpid());
+        printf("\nMy Parent Process ID = %d",getppid());
+    }
+    else
+    {
+        printf("\nI am Parent Process ID = %d",getpid());
+        printf("\nMy Child Process ID = %d",pid);
+    }
+}
+
+4) Zombie Process Demonstration:
+
+#include<sys/types.h>
+#include<unistd.h>
+#include<stdio.h>
+void main()
+{
+    pid_t pid;
+    int status;
+    
+    printf("Zombie Process Demonstration\n");
+    printf("\nFrom Parent Process");
+    pid=fork();
+    if(pid==-1)
+    {
+        printf("\nProcess Creation Error");
+    }
+    else if(pid==0)
+    {
+        printf("\nI am Child Process ID = %d",getpid());
+        printf("\nMy Parent Process ID = %d",getppid());
+    }
+    else
+    {
+        sleep(1);
+        //system("ps");                     //abnormal temination of child. Parent doesnt care.   
+        //wait(&status);
+        system("ps");                       //child terminated normally
+        printf("\nI am Parent Process ID = %d",getpid());
+        printf("\nMy Child Process ID = %d",pid);
+    }
+}
+
+
+
+
+
+
+#include<sys/types.h>
+#include<unistd.h>
+#include<stdio.h>
+void bubble_sort(int[],int);
+void quick_sort(int[],int);
+
+
+void main()
+{
+    int arr[10],no,i,j,temp;
+    pid_t pid;
+    void bubble_sort(int arr[],int no)
+    {
+    printf("\nEnter no of elements to sort:- ");
+    scanf("%d",&no);
+    printf("Enter %d values:- ",no);
+    for(i=0;i<no;i++)
+    {
+        scanf("%d",&arr[i]);
+    }
+    for(i=0;i<no-1;i++)
+    {
+        for(j=0;j<no-i-1;j++)
+        {
+            if(arr[j] > arr[j+1])
+            {
+               temp = arr[j];
+               arr[j]=arr[j+1];
+               arr[j+1]=temp;
+            }
+        }
+    }
+    printf("Bubble sort using Parent Process Acending order:- ");
+    
+    
+        int i;
+        for (i=0; i < no; i++) 
+        {
+            printf("%d\t ", arr[i]); 
+        }
+        printf("\n"); 
+
+}
+   
+void selection_sort(int arr[],int no)
+{
+    printf("\nEnter no of elements to sort:- ");
+    scanf("%d",&no);
+    printf("Enter %d values:- ",no);
+    for(i=0;i<no;i++)
+    {
+        scanf("%d",&arr[i]);
+    }
+    int min,temp1;
+    for(i=0;i<no-1;i++)
+    {
+        min=i;
+        for(j=i+1;j<no;j++)
+        {
+            if(arr[j]<arr[min])
+            {
+                min=j;
+                temp1=arr[min];
+                arr[min]=arr[i];
+                arr[i]=temp1;
+                
+            }
+        }
+    }
+    printf("\nSelection sort using Child Process Descending order:- ");
+    
+        for (i=no; i > 0; i--)
+        {
+            printf("%d ", arr[i]); 
+        }
+        printf("\n"); 
+
+}
+    pid=fork();
+    if(pid==-1)
+    {
+        printf("\nError in process creation");
+    }
+    else if(pid==0)
+    {
+        printf("\nChild Process");
+        selection_sort(arr,no);
+        //printArrayDec(arr,no);
+    }
+    else
+    {
+        wait();
+        printf("\nParent Process");
+        bubble_sort(arr,no);
+        //printArrayAsc(arr,no);
+        
+    }
+    
+}
+
